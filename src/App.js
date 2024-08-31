@@ -2,7 +2,12 @@ import "./App.css";
 import Button from "react-bootstrap/Button";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { IoLogoReact } from "react-icons/io5";
+import { FaLinkedin } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa";
 
 export default function App() {
   return (
@@ -10,7 +15,9 @@ export default function App() {
       <header className="app-header">
         <NavbarPortfolio />
       </header>
-      <div className="app-body"></div>
+      <div className="app-body">
+        <AboutMe />
+      </div>
       <footer className="app-footer"></footer>
     </div>
   );
@@ -20,16 +27,24 @@ function NavbarPortfolio() {
   return (
     <div>
       {/* Inicio del navbar, la clase Navbar es el contenedor principal y tiene todos los estilos necesarios */}
-      <Navbar id="navbar" expand="sm">
+      <Navbar id="navbar" className="m-2" expand="sm">
         {/* Marca o Logo que se puede mostrar en el navbar */}
-        <Navbar.Brand href="#">
-          <IoLogoReact size={32} color="#ffc0c0" />
-        </Navbar.Brand>
+        <div className="d-sm mx-auto">
+          <Navbar.Brand href="#">
+            <IoLogoReact size={32} color="#56b177" />
+            <h1 id="navbar-title-lg" className="d-none d-sm-inline">
+              HOSTNAME
+            </h1>
+          </Navbar.Brand>
+        </div>
 
-                {/* Título centrado que aparece solo en dispositivos pequeños */}
-                <div className="d-sm-none mx-auto" style={{ marginTop: "2.5rem" }}>
+        {/* Título centrado que aparece solo en dispositivos pequeños */}
+        <div
+          className="d-sm-none mx-auto"
+          style={{ marginTop: "2.5rem", paddingRight: "1rem" }}
+        >
           <Navbar.Brand href="#home" className="text-center">
-            <h1 id="navbar-title">Portafolio</h1>
+            <h1 id="navbar-title-sm">Bastián Prado L.</h1>
           </Navbar.Brand>
         </div>
 
@@ -38,16 +53,53 @@ function NavbarPortfolio() {
 
         {/* Contiene los links a mostrar en el navbar */}
         <Navbar.Collapse
-          className="text-center justify-content-center"
+          className="text-center justify-content-end"
           id="collapse-btn"
         >
-          <Nav style={{ gap: "2rem" }}>
-            <Nav.Link id="nav-links">Home</Nav.Link>
-            <Nav.Link id="nav-links">Apps</Nav.Link>
-            <Nav.Link id="nav-links">About us</Nav.Link>
+          <Nav style={{ gap: "1rem" }}>
+            <Nav.Link id="nav-links">About me</Nav.Link>
+            <Nav.Link id="nav-links">Skills</Nav.Link>
+            <Nav.Link id="nav-links">My projects</Nav.Link>
+            <Nav.Link id="nav-links">
+              <FaLinkedin size={20} />
+            </Nav.Link>
+            <Nav.Link id="nav-links">
+              <FaGithub size={20} />
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
     </div>
+  );
+}
+
+function AboutMe() {
+  return (
+    <Container className="aboutme-container">
+      <Row className="text-center text-md-left">
+        <Col md={4} className="col-aboutme">
+          <img
+            src="User.jpg"
+            alt="user"
+            className="img-fluid rounded-circle"
+          ></img>
+        </Col>
+        <Col md={8} className="col-aboutme">
+          <h2>What will you find here?</h2>
+          <span>
+            Hi there! I'm [Your Name], currently in my 4th year of Computer
+            Science. Welcome to my portfolio, where you can explore the projects
+            I've created using frontend technologies. I'm passionate about
+            deepening my skills in this field, and I hope you find my work
+            interesting. Feel free to check out my projects below, and don't
+            hesitate to message me if you're interested!
+          </span>
+          <span>
+            <Button variant="dark">Projects</Button>
+            <Button variant="dark">Contact</Button>
+          </span>
+        </Col>
+      </Row>
+    </Container>
   );
 }

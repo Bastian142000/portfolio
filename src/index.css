@@ -1,26 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.app{
- 
+.app {
+  font-family: "Jost";
 }
 
-#navbar{
-  border: 1px outset rgb(240, 233, 235);
-  border-radius: 10px;
+#navbar {
   padding: 0.6rem;
   min-width: fit-content;
 }
 
-#navbar-title{
-  text-transform: uppercase;
+#navbar-title-sm {
+  font-style: italic;
   font-size: 18px;
-  color: #ff9494;
+  color: rgb(31, 30, 30);
 }
 
-#nav-links:hover{
-  color: #ff5757;
+#navbar-title-lg {
+  font-size: 18px;
+  font-style: italic;
+  padding-left: 1rem;
+  color: rgb(31, 30, 30);
 }
+
+#navbar-title-lg:hover {
+  color: #35945b;
+}
+
+#nav-links:hover {
+  color: #35945b;
+}
+
+.aboutme-container {
+  margin-top: 10rem;
+}
+
+.col-aboutme {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.col-aboutme img {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  align-self: center;
+  object-fit: cover;
+  margin-bottom: 3rem;
+}
+
+.col-aboutme h2 {
+  font-size: 38px;
+}
+
+.col-aboutme span {
+  width: 100%;
+  font-size: 20px;
+  word-spacing: 2px;
+}
+
+.col-aboutme button {
+  margin: 2rem 1rem;
+  width: 25%;
+  border: none;
+  color: black;
+  background-color: white;
+  outline: none; 
+  border: 2px solid black; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.col-aboutme button:hover {
+  background-color: black;
+  color: white;
+}
+
+.col-aboutme button:focus {
+  outline: none; 
+  background-color: white;
+  color: black;
+}
+
+
