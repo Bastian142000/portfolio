@@ -22,10 +22,44 @@
 }
 
 #navbar-title-lg {
-  font-size: 18px;
+  font-size: 24px;
   font-style: italic;
   padding-left: 1rem;
   color: rgb(31, 30, 30);
+}
+
+#nav-links {
+  font-size: 22px;
+}
+
+#nav-links {
+  position: relative;
+  color: black; /* Color del texto del enlace */
+  text-decoration: none; /* Eliminar subrayado predeterminado */
+  padding-bottom: 5px; /* Espacio para la línea */
+  transition: color 0.3s ease; /* Suavizar la transición del color */
+}
+
+#nav-links::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: black; /* Color de la línea */
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+#nav-links:hover::after,
+#nav-links:focus::after {
+  width: 100%;
+  left: 0;
+}
+
+#nav-links:hover,
+#nav-links:focus {
+  color: black; /* Cambiar el color del enlace al hacer hover o focus */
 }
 
 #navbar-title-lg:hover {
@@ -72,8 +106,8 @@
   border: none;
   color: black;
   background-color: white;
-  outline: none; 
-  border: 2px solid black; 
+  outline: none;
+  border: 2px solid black;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -83,9 +117,30 @@
 }
 
 .col-aboutme button:focus {
-  outline: none; 
+  outline: none;
   background-color: white;
   color: black;
 }
 
+.aboutme-icons {
+  display: inline-flex;
+  justify-content: center;
+  gap: 3rem;
+}
 
+.git-icon:hover,
+.linkedin-icon:hover {
+  color: #35945b;
+}
+
+@media (max-width: 768px) {
+  .aboutme-container {
+    margin-top: 5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutme-container {
+    margin-top: 3rem;
+  }
+}

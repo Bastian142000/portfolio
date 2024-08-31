@@ -25,13 +25,12 @@ export default function App() {
 
 function NavbarPortfolio() {
   return (
-    <div>
+    <Container>
       {/* Inicio del navbar, la clase Navbar es el contenedor principal y tiene todos los estilos necesarios */}
-      <Navbar id="navbar" className="m-2" expand="sm">
+      <Navbar id="navbar" className="m-2 mt-4" expand="sm">
         {/* Marca o Logo que se puede mostrar en el navbar */}
         <div className="d-sm mx-auto">
           <Navbar.Brand href="#">
-            <IoLogoReact size={32} color="#56b177" />
             <h1 id="navbar-title-lg" className="d-none d-sm-inline">
               HOSTNAME
             </h1>
@@ -43,8 +42,8 @@ function NavbarPortfolio() {
           className="d-sm-none mx-auto"
           style={{ marginTop: "2.5rem", paddingRight: "1rem" }}
         >
-          <Navbar.Brand href="#home" className="text-center">
-            <h1 id="navbar-title-sm">Bastián Prado L.</h1>
+          <Navbar.Brand href="#home">
+            <h1 id="navbar-title-sm text-center">HOSTNAME</h1>
           </Navbar.Brand>
         </div>
 
@@ -60,16 +59,10 @@ function NavbarPortfolio() {
             <Nav.Link id="nav-links">About me</Nav.Link>
             <Nav.Link id="nav-links">Skills</Nav.Link>
             <Nav.Link id="nav-links">My projects</Nav.Link>
-            <Nav.Link id="nav-links">
-              <FaLinkedin size={20} />
-            </Nav.Link>
-            <Nav.Link id="nav-links">
-              <FaGithub size={20} />
-            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </div>
+    </Container>
   );
 }
 
@@ -97,6 +90,10 @@ function AboutMe() {
           <span>
             <Button variant="dark">Projects</Button>
             <Button variant="dark">Contact</Button>
+          </span>
+          <span className="aboutme-icons">
+            <FaGithub size={32} className="git-icon" />
+            <FaLinkedin size={32} className="linkedin-icon" />
           </span>
         </Col>
       </Row>
