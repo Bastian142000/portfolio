@@ -11,6 +11,7 @@
 }
 
 #navbar {
+  margin-top: 1rem;
   padding: 0.6rem;
   min-width: fit-content;
 }
@@ -22,10 +23,44 @@
 }
 
 #navbar-title-lg {
-  font-size: 18px;
+  font-size: 24px;
   font-style: italic;
   padding-left: 1rem;
   color: rgb(31, 30, 30);
+}
+
+#nav-links {
+  font-size: 22px;
+}
+
+#nav-links {
+  position: relative;
+  color: black; /* Color del texto del enlace */
+  text-decoration: none; /* Eliminar subrayado predeterminado */
+  padding-bottom: 5px; /* Espacio para la línea */
+  transition: color 0.3s ease; /* Suavizar la transición del color */
+}
+
+#nav-links::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 50%;
+  background-color: black; /* Color de la línea */
+  transition: width 0.3s ease, left 0.3s ease;
+}
+
+#nav-links:hover::after,
+#nav-links:focus::after {
+  width: 100%;
+  left: 0;
+}
+
+#nav-links:hover,
+#nav-links:focus {
+  color: black; /* Cambiar el color del enlace al hacer hover o focus */
 }
 
 #navbar-title-lg:hover {
@@ -72,20 +107,88 @@
   border: none;
   color: black;
   background-color: white;
-  outline: none; 
-  border: 2px solid black; 
+  outline: none;
+  border: 2px solid #afd89d;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .col-aboutme button:hover {
-  background-color: black;
-  color: white;
+  background-color: #afd89d;
+  color: black;
+  border: none;
 }
 
 .col-aboutme button:focus {
-  outline: none; 
-  background-color: white;
-  color: black;
+  outline: none;
 }
 
+.aboutme-icons {
+  display: inline-flex;
+  justify-content: center;
+  gap: 3rem;
+}
 
+.git-icon:hover,
+.linkedin-icon:hover {
+  color: #35945b;
+}
+
+#col-skills-titles {
+  margin: 4rem;
+}
+
+#col-skills-titles h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#col-skills-titles h3 {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+#col-skills-titles {
+  margin-bottom: 20px;
+}
+
+#skill-list-container {
+  display: inline;
+  flex-wrap: wrap;
+}
+
+#card-header {
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#card-header:hover {
+  background-color: #afd89d;
+}
+
+#skill-name {
+  margin-left: 0.5rem;
+}
+
+#card {
+  height: 300px;
+  overflow-y: auto;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#card:hover {
+  box-shadow: 0 0 10px #61a146;
+  transform: translateY(-5px);
+}
+
+@media (max-width: 768px) {
+  .aboutme-container {
+    margin-top: 5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .aboutme-container {
+    margin-top: 3rem;
+  }
+}
