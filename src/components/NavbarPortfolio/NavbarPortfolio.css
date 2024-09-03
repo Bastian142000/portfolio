@@ -1,0 +1,60 @@
+#navbar {
+    margin-top: 1rem;
+    padding: 0.6rem;
+    min-width: fit-content;
+  }
+  
+  #navbar-title-sm {
+    font-style: italic;
+    font-size: 18px;
+    color: rgb(31, 30, 30);
+  }
+  
+  #navbar-title-lg {
+    font-size: 24px;
+    font-style: italic;
+    padding-left: 1rem;
+    color: rgb(31, 30, 30);
+  }
+  
+  #nav-links {
+    font-size: 22px;
+  }
+  
+  #nav-links {
+    position: relative;
+    color: black; /* Color del texto del enlace */
+    text-decoration: none; /* Eliminar subrayado predeterminado */
+    padding-bottom: 5px; /* Espacio para la línea */
+    transition: color 0.3s ease; /* Suavizar la transición del color */
+  }
+  
+  #nav-links::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: black; /* Color de la línea */
+    transition: width 0.3s ease, left 0.3s ease;
+  }
+  
+  #nav-links:hover::after,
+  #nav-links:focus::after {
+    width: 100%;
+    left: 0;
+  }
+  
+  #nav-links:hover,
+  #nav-links:focus {
+    color: black; /* Cambiar el color del enlace al hacer hover o focus */
+  }
+  
+  #navbar-title-lg:hover {
+    color: #35945b;
+  }
+  
+  #nav-links:hover {
+    color: #35945b;
+  }
