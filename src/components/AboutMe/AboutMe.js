@@ -1,10 +1,11 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import UserImage from "../../assets/images/User.jpg"
+import UserImage from "../../assets/images/User.jpg";
 import Button from "react-bootstrap/Button";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./AboutMe.css";
 
 export default function AboutMe() {
@@ -28,8 +29,10 @@ export default function AboutMe() {
             interesting. Feel free to check out my projects below, and don't
             hesitate to message me if you're interested!
           </span>
-          <span>
-            <Button variant="success">Projects</Button>
+          <span id="aboutme-btns">
+            <Link to="/projects" className="btn btn-success">
+              Projects
+            </Link>
             <Button variant="success">Contact</Button>
           </span>
           <span className="aboutme-icons">

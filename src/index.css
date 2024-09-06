@@ -7,10 +7,6 @@
   font-family: "Jost";
 }
 
-.app {
-  font-family: "Jost";
-}
-
 @media (max-width: 768px) {
   .aboutme-container {
     margin-top: 5rem;
