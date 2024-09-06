@@ -1,0 +1,32 @@
+#to-do-list-titles {
+    margin-top: 4rem;
+}
+
+#to-do-list-titles h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+#to-do-list-titles h3 {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+#task-list {
+  margin-top: 15vh;
+  margin-bottom: 5rem;
+}
+
+#task {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#task div:first-child {
+  flex-grow: 1;
+}
+
+#task div:last-child {
+  margin-left: 20px;
+  padding-right: 1rem;
+}

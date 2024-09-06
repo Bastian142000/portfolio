@@ -1,47 +1,47 @@
 #col-skills-titles {
-    margin: 4rem;
-  }
-  
-  #col-skills-titles h2 {
-    font-size: 24px;
-    font-weight: 300;
-  }
-  
-  #col-skills-titles h3 {
-    font-size: 42px;
-    font-weight: 600;
-  }
-  
-  #col-skills-titles {
-    margin-bottom: 20px;
-  }
-  
-  #skill-list-container {
-    display: inline;
-    flex-wrap: wrap;
-  }
+  margin: 4rem;
+}
 
-  #card-header {
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  #card-header:hover {
-    background-color: #afd89d;
-  }
-  
-  #skill-name {
-    margin-left: 0.5rem;
-  }
-  
-  #card {
-    height: 300px;
-    overflow-y: auto;
-    transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
-  }
-  
-  #card:hover {
-    box-shadow: 0 0 10px #61a146;
-    transform: translateY(-5px);
-  }
+#col-skills-titles h2 {
+  font-size: 24px;
+  font-weight: 300;
+}
+
+#col-skills-titles h3 {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+#col-skills-titles {
+  margin-bottom: 20px;
+}
+
+#skill-list-container {
+  display: inline;
+  flex-wrap: wrap;
+}
+
+#card-header {
+  text-transform: uppercase;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#card-header:hover {
+  background-color: #afd89d;
+}
+
+#skill-name {
+  margin-left: 0.5rem;
+}
+
+#card {
+  height: 300px;
+  overflow-y: auto;
+  transition: box-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+#card:hover {
+  box-shadow: 0 0 10px #61a146;
+  transform: translateY(-5px);
+}

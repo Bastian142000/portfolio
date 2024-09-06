@@ -28,7 +28,7 @@
     word-spacing: 2px;
   }
   
-  .col-aboutme button {
+  .col-aboutme .btn {
     margin: 2rem 1rem;
     width: 25%;
     border: none;
@@ -39,13 +39,13 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
   
-  .col-aboutme button:hover {
+  .col-aboutme .btn:hover {
     background-color: #afd89d;
     color: black;
     border: none;
   }
   
-  .col-aboutme button:focus {
+  .col-aboutme .btn:focus {
     outline: none;
   }
   
