@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import "./ToDoList.css";
 import { useState } from "react";
 
-const tasks = [
+const defaultTasks = [
   {
     id: 1,
     name: "Do housework",
@@ -41,6 +41,12 @@ const tasks = [
 
 // Main function for app To Do List
 export default function ToDoList() {
+  const [tasks, setTasks] = useState(defaultTasks);
+
+  function handleAddTask(task) {
+    setTasks((tasks) => [...tasks, task]);
+  }
+
   return (
     <Container id="container-to-do-list">
       <Row>
@@ -49,15 +55,15 @@ export default function ToDoList() {
             <h2>This is my</h2>
             <h3>To do list</h3>
           </div>
-          <TasksForm />
-          <List />
+          <TasksForm onAddTask={handleAddTask} />
+          <List tasks={tasks} />
         </Col>
       </Row>
     </Container>
   );
 }
 
-function List() {
+function List({ tasks }) {
   return (
     <ul className="justify-content-center" id="task-list">
       {tasks.map((task) => (
@@ -81,11 +87,22 @@ function Task({ task }) {
   );
 }
 
-function TasksForm() {
-  const [newTask, setNewTask] = useState("");
+function TasksForm({ onAddTask }) {
+  const [text, setText] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    const id = crypto.randomUUID();
+    const newTask = {
+      id: id,
+      name: text,
+      description: text,
+      state: "Unfinished",
+    };
+
+    console.log(newTask);
+    onAddTask(newTask);
   }
 
   return (
@@ -94,8 +111,8 @@ function TasksForm() {
         <Form.Control
           type="text"
           placeholder="Enter new task"
-          value={newTask}
-          onChange={(event) => setNewTask(event.target.value)}
+          value={text}
+          onChange={(event) => setText(event.target.value)}
         />
       </Form.Group>
       <Button type="submit" variant="none" id="submit-btn">
