@@ -1,7 +1,10 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 import "./ToDoList.css";
+import { useState } from "react";
 
 const tasks = [
   {
@@ -43,9 +46,10 @@ export default function ToDoList() {
       <Row>
         <Col>
           <div className="text-center" id="to-do-list-titles">
-              <h2>This is my</h2>
-              <h3>To do list</h3>
+            <h2>This is my</h2>
+            <h3>To do list</h3>
           </div>
+          <TasksForm />
           <List />
         </Col>
       </Row>
@@ -55,7 +59,7 @@ export default function ToDoList() {
 
 function List() {
   return (
-    <ul id="task-list">
+    <ul className="justify-content-center" id="task-list">
       {tasks.map((task) => (
         <Task key={task.id} task={task} />
       ))}
@@ -74,5 +78,29 @@ function Task({ task }) {
         <span>{task.state}</span>
       </div>
     </li>
+  );
+}
+
+function TasksForm() {
+  const [newTask, setNewTask] = useState("");
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  }
+
+  return (
+    <Form onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Control
+          type="text"
+          placeholder="Enter new task"
+          value={newTask}
+          onChange={(event) => setNewTask(event.target.value)}
+        />
+      </Form.Group>
+      <Button type="submit" variant="none" id="submit-btn">
+        +
+      </Button>
+    </Form>
   );
 }
