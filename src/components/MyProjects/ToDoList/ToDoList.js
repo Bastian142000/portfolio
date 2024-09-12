@@ -75,7 +75,7 @@ function List({ tasks, onToggleTask }) {
   });
 
   return (
-    <Table striped bordered hover id="task-table">
+    <Table hover id="task-table">
       <tbody id="task-list">
         {sortedTasks.map((task) => (
           <Task key={task.id} task={task} onToggleTask={onToggleTask} />
@@ -93,7 +93,6 @@ function Task({ task, onToggleTask }) {
           type="checkbox"
           value={task.finished}
           onChange={() => onToggleTask(task.id)}
-          id="custom-checkbox"
         ></input>
       </td>
       <td

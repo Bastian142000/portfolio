@@ -39,6 +39,6 @@ form {
   margin-top: 3rem;
 }
 
-#custom-checkbox {
-  cursor: pointer;
+.table td {
+  border: none;
 }
