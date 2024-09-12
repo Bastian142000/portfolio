@@ -3,38 +3,36 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Table from "react-bootstrap/Table";
 import "./ToDoList.css";
 import { useState } from "react";
+import { BsPencil } from "react-icons/bs";
+import { FaRegTrashAlt } from "react-icons/fa";
 
 const defaultTasks = [
   {
     id: 1,
-    name: "Do housework",
-    description: "Do the dishes and broom the living",
+    name: "Do the dishes and broom the living",
     state: "Unfinished",
   },
   {
     id: 2,
-    name: "Do exercise",
-    description: "Do arms and chest with dumbells",
+    name: "Do arms and chest with dumbells",
     state: "Unfinished",
   },
   {
     id: 3,
-    name: "Walk the dog",
-    description: "Take Mike for a walk in the park",
+    name: "Take Mike for a walk in the park",
     state: "Finished",
   },
   {
     id: 4,
     name: "Call the bank",
-    description: "Call the bank asistant to ask a new credit line",
     state: "Unfinished",
   },
   {
     id: 5,
     name: "Read book",
-    description: "Read 50 pages of the current book",
     state: "Finished",
   },
 ];
@@ -47,6 +45,10 @@ export default function ToDoList() {
     setTasks((tasks) => [...tasks, task]);
   }
 
+  function handleDeleteTask(id) {
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <Container id="container-to-do-list">
       <Row>
@@ -56,34 +58,33 @@ export default function ToDoList() {
             <h3>To do list</h3>
           </div>
           <TasksForm onAddTask={handleAddTask} />
-          <List tasks={tasks} />
+          <List tasks={tasks} onDeleteTask={handleDeleteTask} />
         </Col>
       </Row>
     </Container>
   );
 }
 
-function List({ tasks }) {
+function List({ tasks, onDeleteTask }) {
   return (
-    <ul className="justify-content-center" id="task-list">
-      {tasks.map((task) => (
-        <Task key={task.id} task={task} />
-      ))}
-    </ul>
+    <Table striped bordered hover id="task-table">
+      <tbody id="task-list">
+        {tasks.map((task) => (
+          <Task key={task.id} task={task} onDeleteTask={onDeleteTask} />
+        ))}
+      </tbody>
+    </Table>
   );
 }
 
-function Task({ task }) {
+function Task({ task, onDeleteTask }) {
   return (
-    <li id="task">
-      <div>
-        <h3>{task.name}</h3>
-        <p>{task.description}</p>
-      </div>
-      <div>
-        <span>{task.state}</span>
-      </div>
-    </li>
+    <tr>
+      <td>
+        <input type="checkbox"></input>
+      </td>
+      <td style={{maxWidth: '20rem',overflowWrap: "break-word"}}>{task.name}</td>
+    </tr>
   );
 }
 
@@ -93,11 +94,12 @@ function TasksForm({ onAddTask }) {
   function handleSubmit(event) {
     event.preventDefault();
 
+    if (!text) return;
+
     const id = crypto.randomUUID();
     const newTask = {
       id: id,
       name: text,
-      description: text,
       state: "Unfinished",
     };
 

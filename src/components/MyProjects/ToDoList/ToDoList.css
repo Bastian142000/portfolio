@@ -11,29 +11,6 @@
   font-weight: 600;
 }
 
-#task-list {
-  margin-top: 3rem;
-  margin-right: 2rem;
-  margin-bottom: 5rem;
-}
-
-#task {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  border: 1px solid black;
-}
-
-#task div:first-child {
-  flex-grow: 1;
-}
-
-#task div:last-child {
-  margin-left: 20px;
-  padding-right: 1rem;
-}
-
 form {
   display: flex;
   justify-content: center;
@@ -55,3 +32,10 @@ form {
 #submit-btn:hover {
   background-color: greenyellow;
 }
+
+#task-table {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
