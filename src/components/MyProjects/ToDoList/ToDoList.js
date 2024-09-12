@@ -6,34 +6,32 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import "./ToDoList.css";
 import { useState } from "react";
-import { BsPencil } from "react-icons/bs";
-import { FaRegTrashAlt } from "react-icons/fa";
 
 const defaultTasks = [
   {
     id: 1,
     name: "Do the dishes and broom the living",
-    state: "Unfinished",
+    finished: false,
   },
   {
     id: 2,
     name: "Do arms and chest with dumbells",
-    state: "Unfinished",
+    finished: false,
   },
   {
     id: 3,
     name: "Take Mike for a walk in the park",
-    state: "Finished",
+    finished: false,
   },
   {
     id: 4,
     name: "Call the bank",
-    state: "Unfinished",
+    finished: false,
   },
   {
     id: 5,
     name: "Read book",
-    state: "Finished",
+    finished: false,
   },
 ];
 
@@ -45,8 +43,12 @@ export default function ToDoList() {
     setTasks((tasks) => [...tasks, task]);
   }
 
-  function handleDeleteTask(id) {
-    setTasks((tasks) => tasks.filter((task) => task.id !== id));
+  function handleToggleTask(id) {
+    setTasks((tasks) =>
+      tasks.map((task) =>
+        task.id === id ? { ...task, finished: !task.finished } : task
+      )
+    );
   }
 
   return (
@@ -58,32 +60,51 @@ export default function ToDoList() {
             <h3>To do list</h3>
           </div>
           <TasksForm onAddTask={handleAddTask} />
-          <List tasks={tasks} onDeleteTask={handleDeleteTask} />
+          <List tasks={tasks} onToggleTask={handleToggleTask} />
         </Col>
       </Row>
     </Container>
   );
 }
 
-function List({ tasks, onDeleteTask }) {
+function List({ tasks, onToggleTask }) {
+  const sortedTasks = tasks.sort((a, b) => {
+    if (a.finished && !b.finished) return 1;
+    if (!a.finished && b.finished) return -1;
+    return 0;
+  });
+
   return (
     <Table striped bordered hover id="task-table">
       <tbody id="task-list">
-        {tasks.map((task) => (
-          <Task key={task.id} task={task} onDeleteTask={onDeleteTask} />
+        {sortedTasks.map((task) => (
+          <Task key={task.id} task={task} onToggleTask={onToggleTask} />
         ))}
       </tbody>
     </Table>
   );
 }
 
-function Task({ task, onDeleteTask }) {
+function Task({ task, onToggleTask }) {
   return (
     <tr>
       <td>
-        <input type="checkbox"></input>
+        <input
+          type="checkbox"
+          value={task.finished}
+          onChange={() => onToggleTask(task.id)}
+          id="custom-checkbox"
+        ></input>
       </td>
-      <td style={{maxWidth: '20rem',overflowWrap: "break-word"}}>{task.name}</td>
+      <td
+        style={{
+          maxWidth: "20rem",
+          overflowWrap: "break-word",
+          textDecoration: `${task.finished === true ? "line-through" : ""}`,
+        }}
+      >
+        {task.name}
+      </td>
     </tr>
   );
 }
@@ -100,11 +121,12 @@ function TasksForm({ onAddTask }) {
     const newTask = {
       id: id,
       name: text,
-      state: "Unfinished",
+      finished: false,
     };
 
-    console.log(newTask);
     onAddTask(newTask);
+
+    setText("");
   }
 
   return (
