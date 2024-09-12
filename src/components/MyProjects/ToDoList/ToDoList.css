@@ -1,5 +1,5 @@
 #to-do-list-titles {
-    margin-top: 4rem;
+  margin-top: 4rem;
 }
 
 #to-do-list-titles h2 {
@@ -11,22 +11,31 @@
   font-weight: 600;
 }
 
-#task-list {
-  margin-top: 15vh;
-  margin-bottom: 5rem;
-}
-
-#task {
+form {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  margin-top: 3rem;
 }
 
-#task div:first-child {
-  flex-grow: 1;
+#submit-btn {
+  border-radius: 50%;
+  margin-left: 1rem;
+  width: 45px;
+  font-size: 20px;
+  background-color: white;
+  color: black;
+  border: 1px solid rgb(175, 171, 171);
+  transition: background-color 0.3s ease-in-out, color 0.3s ease;
 }
 
-#task div:last-child {
-  margin-left: 20px;
-  padding-right: 1rem;
+#submit-btn:hover {
+  background-color: greenyellow;
 }
+
+#task-table {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
