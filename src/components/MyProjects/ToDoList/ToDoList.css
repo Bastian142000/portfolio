@@ -68,3 +68,12 @@ form {
   font-weight: 800;
   color: #235418;
 }
+
+#delete-icon {
+  cursor: pointer;
+  transition: color ease 0.3s;
+}
+
+#delete-icon:hover {
+  color: red;
+} 

@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import "./ToDoList.css";
 import { useState } from "react";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 const defaultTasks = [
   {
@@ -51,6 +52,10 @@ export default function ToDoList() {
     );
   }
 
+  function handleDeleteTask(id) {
+    setTasks((tasks) => tasks.filter((task) => task.id !== id));
+  }
+
   return (
     <Container id="container-to-do-list">
       <Row>
@@ -60,14 +65,14 @@ export default function ToDoList() {
             <h3>To do list</h3>
           </div>
           <TasksForm onAddTask={handleAddTask} />
-          <List tasks={tasks} onToggleTask={handleToggleTask} />
+          <List tasks={tasks} onToggleTask={handleToggleTask} onDeleteTask={handleDeleteTask} />
         </Col>
       </Row>
     </Container>
   );
 }
 
-function List({ tasks, onToggleTask }) {
+function List({ tasks, onToggleTask, onDeleteTask }) {
   const sortedTasks = tasks.sort((a, b) => {
     if (a.finished && !b.finished) return 1;
     if (!a.finished && b.finished) return -1;
@@ -78,14 +83,14 @@ function List({ tasks, onToggleTask }) {
     <Table hover id="task-table">
       <tbody id="task-list">
         {sortedTasks.map((task) => (
-          <Task key={task.id} task={task} onToggleTask={onToggleTask} />
+          <Task key={task.id} task={task} onToggleTask={onToggleTask} onDeleteTask={onDeleteTask} />
         ))}
       </tbody>
     </Table>
   );
 }
 
-function Task({ task, onToggleTask }) {
+function Task({ task, onToggleTask, onDeleteTask }) {
   return (
     <tr>
       <td>
@@ -107,6 +112,9 @@ function Task({ task, onToggleTask }) {
         }}
       >
         {task.name}
+      </td>
+      <td>
+        <RiDeleteBin6Line id="delete-icon" onClick={() => onDeleteTask(task.id)}/>
       </td>
     </tr>
   );
