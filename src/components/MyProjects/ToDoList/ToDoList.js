@@ -89,11 +89,15 @@ function Task({ task, onToggleTask }) {
   return (
     <tr>
       <td>
-        <input
-          type="checkbox"
-          value={task.finished}
-          onChange={() => onToggleTask(task.id)}
-        ></input>
+        <label className="checkbox-container">
+          <input
+            type="checkbox"
+            value={task.finished}
+            onChange={() => onToggleTask(task.id)}
+            id="custom-checkbox"
+          ></input>
+          <span className="checkmark"></span>
+        </label>
       </td>
       <td
         style={{

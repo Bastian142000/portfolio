@@ -6,6 +6,7 @@
   font-size: 24px;
   font-weight: 300;
 }
+
 #to-do-list-titles h3 {
   font-size: 42px;
   font-weight: 600;
@@ -37,8 +38,38 @@ form {
   display: flex;
   justify-content: center;
   margin-top: 3rem;
+  list-style: none;
+  border: none;
 }
+
+#task-table td {
+  border: none;
+}
+
 
 .table td {
   border: none;
+}
+
+.checkbox-container input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  appearance: none;
+  background-color: #fff;
+  margin: 0;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.checkbox-container input:checked::after {
+  content: "\2714"; /* Unicode character for checkmark */
+  font-size: 14px;
+  font-weight: 800;
+  color: #235418;
 }
