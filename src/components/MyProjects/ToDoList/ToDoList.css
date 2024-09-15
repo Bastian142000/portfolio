@@ -46,6 +46,11 @@ form {
   border: none;
 }
 
+
+.table td {
+  border: none;
+}
+
 .checkbox-container input {
   display: flex;
   justify-content: center;
