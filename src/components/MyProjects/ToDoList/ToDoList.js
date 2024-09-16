@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import "./ToDoList.css";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 
 const defaultTasks = [
@@ -31,7 +31,7 @@ const defaultTasks = [
   },
   {
     id: 5,
-    name: "Read book",
+    name: "Read 15 pages of a book",
     finished: false,
   },
 ];
@@ -76,7 +76,7 @@ function List({ tasks, onToggleTask, onDeleteTask }) {
   const sortedTasks = tasks.sort((a, b) => {
     if (a.finished && !b.finished) return 1;
     if (!a.finished && b.finished) return -1;
-    return 0;
+    return a.name.localeCompare(b.name);
   });
 
   return (
@@ -91,6 +91,7 @@ function List({ tasks, onToggleTask, onDeleteTask }) {
 }
 
 function Task({ task, onToggleTask, onDeleteTask }) {
+  const checkboxRef = useRef(null);
   return (
     <tr>
       <td>
@@ -100,21 +101,28 @@ function Task({ task, onToggleTask, onDeleteTask }) {
             value={task.finished}
             onChange={() => onToggleTask(task.id)}
             id="custom-checkbox"
+            ref={checkboxRef}
           ></input>
           <span className="checkmark"></span>
         </label>
       </td>
       <td
+        onClick={() => {
+          checkboxRef.current.click();
+        }}
         style={{
-          maxWidth: "20rem",
+          maxWidth: "18rem",
+          width: "18rem",
           overflowWrap: "break-word",
           textDecoration: `${task.finished === true ? "line-through" : ""}`,
+          opacity: `${task.finished === true ? "60%" : ""}`,
         }}
+        id="task-name"
       >
         {task.name}
       </td>
       <td>
-        <RiDeleteBin6Line id="delete-icon" onClick={() => onDeleteTask(task.id)}/>
+        <RiDeleteBin6Line id="delete-icon" onClick={() => onDeleteTask(task.id)} />
       </td>
     </tr>
   );

@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import ToDoList from "../../assets/images/ToDoList.jpg";
 
 export default function MyProjects() {
   return (
@@ -19,34 +20,14 @@ export default function MyProjects() {
       <Row>
         <Col md={3}>
           <Card id="card-projects">
-            <Card.Header>Parking Lot</Card.Header>
+            <Card.Header>To-Do List</Card.Header>
             <Card.Body>
-              <Card.Img src="Leaves.jpg"></Card.Img>
-              <Card.Text>Wa</Card.Text>
+              <Card.Img src={ToDoList}></Card.Img>
+              <Card.Text>A list of tasks where you can add new tasks, mark them as completed, or delete them.</Card.Text>
             </Card.Body>
             <Card.Footer>
               <Link to={"/projects/to-do-list"} className="btn btn-success">Watch</Link>
             </Card.Footer>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card id="card-projects">
-            <Card.Header>Project 1</Card.Header>
-            <Card.Body>
-              <Card.Title></Card.Title>
-              <Card.Text></Card.Text>
-            </Card.Body>
-            <Card.Footer></Card.Footer>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card id="card-projects">
-            <Card.Header>Project 1</Card.Header>
-            <Card.Body>
-              <Card.Title></Card.Title>
-              <Card.Text></Card.Text>
-            </Card.Body>
-            <Card.Footer></Card.Footer>
           </Card>
         </Col>
         <Col md={3}>
