@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
-import ToDoList from "../../assets/images/ToDoList.jpg";
+import { projects } from "../../data/projects";
 
 export default function MyProjects() {
   return (
@@ -17,30 +17,31 @@ export default function MyProjects() {
           </Col>
         </Col>
       </Row>
-      <Row>
-        <Col md={3}>
-          <Card id="card-projects">
-            <Card.Header>To-Do List</Card.Header>
-            <Card.Body>
-              <Card.Img src={ToDoList}></Card.Img>
-              <Card.Text>A list of tasks where you can add new tasks, mark them as completed, or delete them.</Card.Text>
-            </Card.Body>
-            <Card.Footer>
-              <Link to={"/projects/to-do-list"} className="btn btn-success">Watch</Link>
-            </Card.Footer>
-          </Card>
-        </Col>
-        <Col md={3}>
-          <Card id="card-projects">
-            <Card.Header>Project 1</Card.Header>
-            <Card.Body>
-              <Card.Title></Card.Title>
-              <Card.Text></Card.Text>
-            </Card.Body>
-            <Card.Footer></Card.Footer>
-          </Card>
-        </Col>
-      </Row>
+
+      <ProjectsList />
+
+
     </Container>
   );
+}
+
+function ProjectsList() {
+  return <Row>
+    {projects.map((project) => <Project project={project} />)}
+  </Row>
+}
+
+function Project({ project }) {
+  return <Col lg={3}>
+    <Card id="card-projects">
+      <Card.Header>{project.name}</Card.Header>
+      <Card.Body>
+        <Card.Img src={project.image}></Card.Img>
+        <Card.Text>{project.description}</Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <Link to={project.link} className="btn btn-success">Watch</Link>
+      </Card.Footer>
+    </Card>
+  </Col>
 }
