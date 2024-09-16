@@ -31,7 +31,7 @@ const defaultTasks = [
   },
   {
     id: 5,
-    name: "Read book",
+    name: "Read 15 pages of a book",
     finished: false,
   },
 ];
@@ -76,7 +76,7 @@ function List({ tasks, onToggleTask, onDeleteTask }) {
   const sortedTasks = tasks.sort((a, b) => {
     if (a.finished && !b.finished) return 1;
     if (!a.finished && b.finished) return -1;
-    return 0;
+    return a.name.localeCompare(b.name);
   });
 
   return (
@@ -115,6 +115,7 @@ function Task({ task, onToggleTask, onDeleteTask }) {
           width: "18rem",
           overflowWrap: "break-word",
           textDecoration: `${task.finished === true ? "line-through" : ""}`,
+          opacity: `${task.finished === true ? "60%" : ""}`,
         }}
         id="task-name"
       >
