@@ -91,3 +91,16 @@ form {
 #task-name:hover {
   color: #235418;
 }
+
+#edit-form {
+  display: inline;
+}
+
+#edit-icon {
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+#edit-icon:hover {
+  color: rgb(181, 181, 45);
+}

@@ -7,11 +7,13 @@ import Table from "react-bootstrap/Table";
 import "./ToDoList.css";
 import { useRef, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import { RiEdit2Line } from "react-icons/ri";
+
 
 const defaultTasks = [
   {
     id: 1,
-    name: "Do the dishes and broom the living",
+    name: "Do the dishes and broom the living room",
     finished: false,
   },
   {
@@ -56,6 +58,12 @@ export default function ToDoList() {
     setTasks((tasks) => tasks.filter((task) => task.id !== id));
   }
 
+  function handleEditTask(id, newName) {
+    setTasks((tasks) =>
+      tasks.map((task) => (task.id === id ? { ...task, name: newName } : task))
+    );
+  }
+
   return (
     <Container id="container-to-do-list">
       <Row>
@@ -65,14 +73,14 @@ export default function ToDoList() {
             <h3>To do list</h3>
           </div>
           <TasksForm onAddTask={handleAddTask} />
-          <List tasks={tasks} onToggleTask={handleToggleTask} onDeleteTask={handleDeleteTask} />
+          <List tasks={tasks} onToggleTask={handleToggleTask} onDeleteTask={handleDeleteTask} onEditTask={handleEditTask} />
         </Col>
       </Row>
     </Container>
   );
 }
 
-function List({ tasks, onToggleTask, onDeleteTask }) {
+function List({ tasks, onToggleTask, onDeleteTask, onEditTask }) {
   const sortedTasks = tasks.sort((a, b) => {
     if (a.finished && !b.finished) return 1;
     if (!a.finished && b.finished) return -1;
@@ -83,15 +91,18 @@ function List({ tasks, onToggleTask, onDeleteTask }) {
     <Table hover id="task-table">
       <tbody id="task-list">
         {sortedTasks.map((task) => (
-          <Task key={task.id} task={task} onToggleTask={onToggleTask} onDeleteTask={onDeleteTask} />
+          <Task key={task.id} task={task} onToggleTask={onToggleTask} onDeleteTask={onDeleteTask} onEditTask={onEditTask} />
         ))}
       </tbody>
     </Table>
   );
 }
 
-function Task({ task, onToggleTask, onDeleteTask }) {
+function Task({ task, onToggleTask, onDeleteTask, onEditTask }) {
   const checkboxRef = useRef(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [editText, setEditText] = useState(task.name);
+
   return (
     <tr>
       <td>
@@ -107,26 +118,58 @@ function Task({ task, onToggleTask, onDeleteTask }) {
         </label>
       </td>
       <td
-        onClick={() => {
-          checkboxRef.current.click();
-        }}
         style={{
           maxWidth: "18rem",
           width: "18rem",
           overflowWrap: "break-word",
-          textDecoration: `${task.finished === true ? "line-through" : ""}`,
-          opacity: `${task.finished === true ? "60%" : ""}`,
         }}
         id="task-name"
       >
-        {task.name}
+        {isEditing ? (
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (!editText.trim()) {
+                onDeleteTask(task.id);
+              } else {
+                onEditTask(task.id, editText);
+              }
+              setIsEditing(false);
+            }}
+            id="edit-form"
+          >
+            <Form.Control
+              type="text"
+              value={editText}
+              onChange={(e) => setEditText(e.target.value)}
+              autoFocus
+              id="edit-form"
+            />
+          </Form>
+        ) : (
+          <span
+            onClick={() => checkboxRef.current.click()}
+            style={{
+              textDecoration: `${task.finished === true ? "line-through" : ""}`,
+              opacity: `${task.finished === true ? "60%" : ""}`,
+            }}
+          >
+            {task.name}
+          </span>
+        )}
       </td>
       <td>
+        <RiEdit2Line
+          id="edit-icon"
+          onClick={() => setIsEditing(!isEditing)}
+        />
         <RiDeleteBin6Line id="delete-icon" onClick={() => onDeleteTask(task.id)} />
       </td>
     </tr>
   );
 }
+
+
 
 function TasksForm({ onAddTask }) {
   const [text, setText] = useState("");

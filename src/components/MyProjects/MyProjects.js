@@ -17,17 +17,14 @@ export default function MyProjects() {
           </Col>
         </Col>
       </Row>
-
       <ProjectsList />
-
-
     </Container>
   );
 }
 
 function ProjectsList() {
   return <Row>
-    {projects.map((project) => <Project project={project} />)}
+    {projects.map((project) => <Project project={project} key={project.id}/>)}
   </Row>
 }
 
