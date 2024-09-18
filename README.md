@@ -1,5 +1,5 @@
 # To use this project
-Run npm install while you're at the directory
+Run npm install while you're at the directory \
 Run npm start
 
 # Getting Started with Create React App
