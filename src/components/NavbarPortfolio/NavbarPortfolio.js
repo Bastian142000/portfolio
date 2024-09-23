@@ -13,7 +13,7 @@ export default function NavbarPortfolio() {
         <div className="d-sm mx-auto">
           <Navbar.Brand as={Link} to={"/"}>
             <h1 id="navbar-title-lg" className="d-none d-sm-inline">
-              HOSTNAME
+              BASTIAN PRADO L.
             </h1>
           </Navbar.Brand>
         </div>

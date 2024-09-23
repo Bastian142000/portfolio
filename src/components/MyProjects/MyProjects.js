@@ -33,7 +33,7 @@ function Project({ project }) {
     <Card id="card-projects">
       <Card.Header>{project.name}</Card.Header>
       <Card.Body>
-        <Card.Img src={project.image}></Card.Img>
+        <Card.Img src={project.image} className="img-fluid" alt="Img in work..."></Card.Img>
         <Card.Text>{project.description}</Card.Text>
       </Card.Body>
       <Card.Footer>

@@ -9,7 +9,6 @@ import { useRef, useState } from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { RiEdit2Line } from "react-icons/ri";
 
-
 const defaultTasks = [
   {
     id: 1,
@@ -73,7 +72,12 @@ export default function ToDoList() {
             <h3>To do list</h3>
           </div>
           <TasksForm onAddTask={handleAddTask} />
-          <List tasks={tasks} onToggleTask={handleToggleTask} onDeleteTask={handleDeleteTask} onEditTask={handleEditTask} />
+          <List
+            tasks={tasks}
+            onToggleTask={handleToggleTask}
+            onDeleteTask={handleDeleteTask}
+            onEditTask={handleEditTask}
+          />
         </Col>
       </Row>
     </Container>
@@ -91,7 +95,13 @@ function List({ tasks, onToggleTask, onDeleteTask, onEditTask }) {
     <Table hover id="task-table">
       <tbody id="task-list">
         {sortedTasks.map((task) => (
-          <Task key={task.id} task={task} onToggleTask={onToggleTask} onDeleteTask={onDeleteTask} onEditTask={onEditTask} />
+          <Task
+            key={task.id}
+            task={task}
+            onToggleTask={onToggleTask}
+            onDeleteTask={onDeleteTask}
+            onEditTask={onEditTask}
+          />
         ))}
       </tbody>
     </Table>
@@ -110,7 +120,12 @@ function Task({ task, onToggleTask, onDeleteTask, onEditTask }) {
           <input
             type="checkbox"
             value={task.finished}
-            onChange={() => onToggleTask(task.id)}
+            onChange={(e) => {
+              onToggleTask(task.id);
+              if (isEditing) {
+                setIsEditing(false);
+              }
+            }}
             id="custom-checkbox"
             ref={checkboxRef}
           ></input>
@@ -161,15 +176,16 @@ function Task({ task, onToggleTask, onDeleteTask, onEditTask }) {
       <td>
         <RiEdit2Line
           id="edit-icon"
-          onClick={() => setIsEditing(!isEditing)}
+          onClick={() => !task.finished && setIsEditing(!isEditing)}
         />
-        <RiDeleteBin6Line id="delete-icon" onClick={() => onDeleteTask(task.id)} />
+        <RiDeleteBin6Line
+          id="delete-icon"
+          onClick={() => onDeleteTask(task.id)}
+        />
       </td>
     </tr>
   );
 }
-
-
 
 function TasksForm({ onAddTask }) {
   const [text, setText] = useState("");
