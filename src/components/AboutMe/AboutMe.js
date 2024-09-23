@@ -22,7 +22,7 @@ export default function AboutMe() {
         <Col md={8} className="col-aboutme">
           <h2>What will you find here?</h2>
           <span>
-            Hi there! I'm [Your Name], currently in my 4th year of Computer
+            Hi there! I'm Bastian Prado, currently in my 4th year of Computer
             Science. Welcome to my portfolio, where you can explore the projects
             I've created using frontend technologies. I'm passionate about
             deepening my skills in this field, and I hope you find my work
@@ -33,11 +33,20 @@ export default function AboutMe() {
             <Link to="/projects" className="btn btn-success">
               Projects
             </Link>
-            <Button variant="success">Contact</Button>
+            <Link
+              to="https://www.linkedin.com/in/bastián-prado-leiva-0b6a81221"
+              className="btn btn-success"
+            >
+              Contact
+            </Link>
           </span>
           <span className="aboutme-icons">
-            <FaGithub size={32} className="git-icon" />
-            <FaLinkedin size={32} className="linkedin-icon" />
+            <Link to="https://github.com/Bastian142000/portfolio">
+              <FaGithub size={32} className="git-icon" />
+            </Link>
+            <Link to="https://www.linkedin.com/in/bastián-prado-leiva-0b6a81221">
+              <FaLinkedin size={32} className="linkedin-icon" />
+            </Link>
           </span>
         </Col>
       </Row>

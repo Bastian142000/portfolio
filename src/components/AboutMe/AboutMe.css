@@ -1,61 +1,66 @@
 .aboutme-container {
-    margin-top: 10rem;
-  }
-  
-  .col-aboutme {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-  }
-  
-  .col-aboutme img {
-    width: 300px;
-    height: 300px;
-    border-radius: 150px;
-    align-self: center;
-    object-fit: cover;
-    margin-bottom: 3rem;
-  }
-  
-  .col-aboutme h2 {
-    font-size: 38px;
-  }
-  
-  .col-aboutme span {
-    width: 100%;
-    font-size: 20px;
-    word-spacing: 2px;
-  }
-  
-  .col-aboutme .btn {
-    margin: 2rem 1rem;
-    width: 25%;
-    border: none;
-    color: black;
-    background-color: white;
-    outline: none;
-    border: 2px solid #afd89d;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-  
-  .col-aboutme .btn:hover {
-    background-color: #afd89d;
-    color: black;
-    border: none;
-  }
-  
-  .col-aboutme .btn:focus {
-    outline: none;
-  }
-  
-  .aboutme-icons {
-    display: inline-flex;
-    justify-content: center;
-    gap: 3rem;
-  }
-  
-  .git-icon:hover,
-  .linkedin-icon:hover {
-    color: #35945b;
-  }
+  margin-top: 10rem;
+}
+
+.col-aboutme {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+}
+
+.col-aboutme img {
+  width: 300px;
+  height: 300px;
+  border-radius: 150px;
+  align-self: center;
+  object-fit: cover;
+  margin-bottom: 3rem;
+}
+
+.col-aboutme h2 {
+  font-size: 38px;
+}
+
+.col-aboutme span {
+  width: 100%;
+  font-size: 20px;
+  word-spacing: 2px;
+}
+
+.col-aboutme .btn {
+  margin: 2rem 1rem;
+  width: 25%;
+  border: none;
+  color: black;
+  background-color: white;
+  outline: none;
+  border: 2px solid #afd89d;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.col-aboutme .btn:hover {
+  background-color: #afd89d;
+  color: black;
+  border: none;
+}
+
+.col-aboutme .btn:focus {
+  outline: none;
+}
+
+.aboutme-icons {
+  display: inline-flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.git-icon,
+.linkedin-icon {
+  color: black;
+}
+
+.git-icon:hover,
+.linkedin-icon:hover {
+  color: #35945b;
+}
