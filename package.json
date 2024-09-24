@@ -1,7 +1,7 @@
 {
+  "homepage": "https://bastian142000.github.io/portfolio",
   "name": "portfolio",
   "version": "0.1.0",
-  "homepage": "https://Bastian142000.github.io",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
