@@ -14,7 +14,7 @@ export default function App() {
         </header>
         <div className="app-body">
           <Routes>
-            <Route path="/portfolio" element={<AboutMe />} />
+            <Route path="/" element={<AboutMe />} />
             <Route path="/skills" element={<SkillList />} />
             <Route path="/projects" element={<MyProjects />} />
             <Route path="/projects/to-do-list" element={<ToDoList />} />
